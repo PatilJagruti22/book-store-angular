@@ -7,8 +7,9 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HowItWorksComponent } from './public-components/how-it-works/how-it-works.component';
 import { AboutUsComponent } from './public-components/about-us/about-us.component';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
+// import { AuthModule } from './auth/auth.module';
+// import { UserModule } from './user/user.module';
+// import { PublicModule } from './public/public.module';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { UserModule } from './user/user.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
-    AuthModule,
-    UserModule
+    // AuthModule,
+    // UserModule,
+    // PublicModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
