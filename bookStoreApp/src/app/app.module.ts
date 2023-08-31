@@ -7,23 +7,19 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HowItWorksComponent } from './public-components/how-it-works/how-it-works.component';
 import { AboutUsComponent } from './public-components/about-us/about-us.component';
-// import { AuthModule } from './auth/auth.module';
-// import { UserModule } from './user/user.module';
-// import { PublicModule } from './public/public.module';
+import { HomeComponent } from './public-components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HowItWorksComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
     BrowserAnimationsModule,
-    // AuthModule,
-    // UserModule,
-    // PublicModule,
     AppRoutingModule,
   ],
   providers: [],

@@ -6,9 +6,10 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { AuthComponent } from './auth/auth.component';
 import { UserComponent } from './user/user.component';
 import { BooksComponent } from './books/books.component';
+import { HomeComponent } from './public-components/home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'about-us', pathMatch: 'full'}, 
+  {path: '', component: HomeComponent, pathMatch: 'full'}, 
   { path: 'about-us', component: AboutUsComponent },
   { path: 'how-it-works', component: HowItWorksComponent },
   {path: 'auth', 
