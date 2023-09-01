@@ -8,26 +8,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
 
-  public name: string = '';
+  //public name: string = '';
   //public email: string = '';
-  public id: string = '';
+  // public id: string = '';
 
-  constructor(private route : ActivatedRoute, private router : Router){}
+  constructor(){}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((queryParams) =>{
-      this.name = queryParams['name'];
-      //this.email = queryParams['email'];
-      this.id = queryParams['id'];
-      console.log(queryParams)
-    });
+    // this.route.queryParams.subscribe((queryParams) =>{
+    //   this.name = queryParams['name'];
+    //   //this.email = queryParams['email'];
+    //   this.id = queryParams['id'];
+    //   console.log(queryParams)
+    // });
   }
 
-  goToSignup(): void{
-    this.router.navigate(['/auth/signup']);
-  }
+  // goToSignup(): void{
+  //   this.router.navigate(['/auth/signup']);
+  // }
 
-  goToBookDetails(): void{
-    this.router.navigate(['/books/book-details', 100, 'author', 300]);
-  }
+  // goToBookDetails(): void{
+  //   this.router.navigate(['/books/book-details', 100, 'author', 300]);
+  // }
 }
