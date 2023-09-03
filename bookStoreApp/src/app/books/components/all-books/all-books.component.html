@@ -1,2 +1,9 @@
-<p>all-books works!</p>
-<a routerLink = '/books/1'>Go to all books</a>
+
+<h2>{{pageTitle}}</h2>
+
+<button mat-raised-button color="primary" [routerLink]="'new'">Add New Book</button>
+
+<app-book-card [allBooks]="books"></app-book-card>
+
+
+
