@@ -5,13 +5,15 @@ import { MaterialModule } from './material.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
+import { AuthorsComponent } from './components/authors/authors.component';
 
 
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
+    AuthorsComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     ToolbarComponent,
     MaterialModule,
-    FooterComponent
+    FooterComponent,
+    AuthorsComponent
   ]
 })
 export class SharedModule { }

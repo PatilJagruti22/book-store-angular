@@ -5,6 +5,10 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { BooksRoutingModule } from './books-routing.module';
 import { BooksComponent } from './books.component';
 import { SharedModule } from '../shared/shared.module';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { RecentBooksComponent } from './components/recent-books/recent-books.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,12 +16,16 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     AllBooksComponent,
     BookDetailsComponent,
-    BooksComponent
+    BooksComponent,
+    AddBookComponent,
+    RecentBooksComponent,
+    BookCardComponent
   ],
   imports: [
     CommonModule,
     BooksRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class BooksModule { }
