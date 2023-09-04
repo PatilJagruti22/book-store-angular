@@ -8,21 +8,11 @@ import { BookModel } from '../../models/book.model';
 })
 export class BookCardComponent implements OnInit{
 
-  @Input('allBooks') 
-  get books() : BookModel[]{
-    return this._books
-  }
+  @Input('allBooks') books: BookModel[];
 
-  set books(books: BookModel[]){
-    books.map(x => x.title = 'Title: ' + x.title)
-    this._books = books;
-  }
-
-  private _books: BookModel[];
-  constructor(){}
+  constructor() { }
 
   ngOnInit(): void {
-    
   }
 
 }

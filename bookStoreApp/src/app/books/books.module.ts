@@ -9,6 +9,7 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 import { RecentBooksComponent } from './components/recent-books/recent-books.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { FormsModule } from '@angular/forms';
+import { AddBookReactiveComponent } from './components/add-book-reactive/add-book-reactive.component';
 
 
 
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     BooksComponent,
     AddBookComponent,
     RecentBooksComponent,
-    BookCardComponent
+    BookCardComponent,
+    AddBookReactiveComponent
   ],
   imports: [
     CommonModule,
