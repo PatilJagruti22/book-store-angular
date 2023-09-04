@@ -12,44 +12,38 @@ import { PriceModel } from '../../models/price.model';
 })
 export class AllBooksComponent implements OnInit{
  
-  public _pageTitle : string;
+  private _pageTitle: string;
+  private _counterService: any;
 
-    public set pageTitle(value: string){
-      this._pageTitle = value;
-    }
-
-    public get pageTitle(){
-      return this._pageTitle;
-    }
-   
-  public books: BookModel[] = [];
-
-  constructor(public bookService : BookService, public _counterService : CounterService){}
-  ngOnInit(): void {
-    this._pageTitle = 'All Books'
-    const allBooks = this.bookService.getBooks();
-    if (Array.isArray(allBooks)) {
-      allBooks.forEach((b: { id: number; author: string; price: PriceModel; title: string; totalPages: string; }) => {
-        var obj = new BookModel();
-        obj.id = b.id;
-        obj.author = b.author;
-        obj.price = b.price;
-        obj.title = b.title;
-        obj.totalPages = b.totalPages;
-        this.books.push(obj);
-      });
-      console.log(this.books);
-    } else {
-      console.error('Expected an array of books, but got:', allBooks);
-    }
+  public set pageTitle(value: string) {
+    this._pageTitle = value;
   }
 
-  increase(){
+  public get pageTitle() {
+    return this._pageTitle;
+  }
+
+  public books: BookModel[] = [];
+
+  constructor(public bookService: BookService) { }
+
+  ngOnInit(): void {
+    this.pageTitle = 'All books'
+    this.getAllBooks();
+  }
+
+  public increase(): void {
     this._counterService.incCounter();
   }
 
-  decrease(){
+  public decrease(): void {
     this._counterService.decCounter();
   }
 
+  private getAllBooks(): void {
+    this.bookService.getBooks()
+      .subscribe((books: BookModel[]) => {
+        this.books = books;
+      });
+  }
 }

@@ -6,11 +6,7 @@ import { BookModel } from '../models/book.model';
 })
 export class BookService {
 
-  constructor() { }
-
-  public getBooks() : any {
-    return (
-      [
+  private allBooks = [
         {
           "id": 1,
           "title": "Java Mutithreding",
@@ -62,7 +58,7 @@ export class BookService {
           }
         },
         {
-          "id": 4,
+          "id": 6,
           "title": "Azure Fundamentals",
           "totalPages": "700",
           "author": "Does",
@@ -72,7 +68,7 @@ export class BookService {
           }
         },
         {
-          "id": 5,
+          "id": 7,
           "title": "Machine Learning",
           "totalPages": "2000",
           "author": "John Does",
@@ -81,11 +77,23 @@ export class BookService {
             "value": 19.999
           }
         }
-      ] 
-    )
-    
-    
+      ];
+
+  constructor() { }
+
+  // public addBook(bookModel: BookModel): void{
+  //   this.allBooks.push(bookModel);
+  // }
+
+  public addBook(bookModel: BookModel): void {
+    console.log('Adding book:', bookModel);
+    this.allBooks.push(bookModel);
+    console.log('All books after adding:', this.allBooks);
   }
+  
+  public getBooks(): any {
+    return this.allBooks;
+}
 
 
   public recentBooks() : any {
