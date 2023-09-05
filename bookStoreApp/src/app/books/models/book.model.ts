@@ -10,5 +10,4 @@ export class BookModel {
     public isPublished: boolean;
     public publishedOn: Date;
     public authors: AuthorModel[];
-  quantity: number;
 }

@@ -1,30 +1,34 @@
 <!-- <div class="book-cart">
-    <h2>Shopping Cart</h2>
+    <h2>Book Cart</h2>
     <ul>
         <li *ngFor="let book of cart">
             <span>{{ book.title }} by {{ book.author }}</span>
-            <span class="price">{{ book.price | currency }}</span>
-            <button (click)="removeBookFromCart(book)">Remove</button>
-          </li>
-        </ul>
-        <div class="cart-total">
-          Total: {{ calculateTotal() | currency }}
-        </div>
-        <button (click)="checkout()">Checkout</button>
-  </div> -->
-
-  <div class="book-cart">
-    <h2>Shopping Cart</h2>
-    <ul>
-        <li>
-            <!-- <span>{{ book.title }} by {{ book.author }}</span>
-            <span class="price">{{ book.price | currency }}</span> -->
-            <button>Remove</button>
+            <span class="price">{{book.price.value + ' '+ book.price.currency}}</span>
+            <button (click)="removeFromCart(book)">Remove</button>
           </li>
         </ul>
         <div class="cart-total">
           Total: 
+           {{ calculateTotal() | currency }} 
         </div>
+         <button (click)="checkout()">Checkout</button> 
         <button>Checkout</button>
+  </div> -->
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <div *ngIf="cart.length === 0" class="empty-cart">
+      Your cart is empty.
+    </div>
+    <div *ngFor="let book of cart" class="cart-item">
+      <div class="cart-item-details">
+        <span>{{ book.title }}</span>
+        <span>{{book.price.value + ' '+ book.price.currency}}</span>
+      </div>
+      <button (click)="removeFromCart(book)">Remove</button>
+    </div>
+    <div *ngIf="cart.length > 0" class="cart-total">
+      Total: {{ calculateTotal() | currency }}
+    </div>
   </div>
   
