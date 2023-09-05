@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './material.module';
 import { FooterComponent } from './components/footer/footer.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AuthorsComponent } from './components/authors/authors.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthorAddressComponent } from './components/author-address/author-address.component';
 
 
 
@@ -13,19 +14,22 @@ import { AuthorsComponent } from './components/authors/authors.component';
   declarations: [
     ToolbarComponent,
     FooterComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    AuthorAddressComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    //AppRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     ToolbarComponent,
     MaterialModule,
     FooterComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    AuthorAddressComponent,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

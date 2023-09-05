@@ -1,0 +1,30 @@
+<!-- <div class="book-cart">
+    <h2>Shopping Cart</h2>
+    <ul>
+        <li *ngFor="let book of cart">
+            <span>{{ book.title }} by {{ book.author }}</span>
+            <span class="price">{{ book.price | currency }}</span>
+            <button (click)="removeBookFromCart(book)">Remove</button>
+          </li>
+        </ul>
+        <div class="cart-total">
+          Total: {{ calculateTotal() | currency }}
+        </div>
+        <button (click)="checkout()">Checkout</button>
+  </div> -->
+
+  <div class="book-cart">
+    <h2>Shopping Cart</h2>
+    <ul>
+        <li>
+            <!-- <span>{{ book.title }} by {{ book.author }}</span>
+            <span class="price">{{ book.price | currency }}</span> -->
+            <button>Remove</button>
+          </li>
+        </ul>
+        <div class="cart-total">
+          Total: 
+        </div>
+        <button>Checkout</button>
+  </div>
+  

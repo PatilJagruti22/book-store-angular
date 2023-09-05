@@ -5,6 +5,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { RecentBooksComponent } from './components/recent-books/recent-books.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddBookReactiveComponent } from './components/add-book-reactive/add-book-reactive.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
       {path: 'recent', component: RecentBooksComponent},
       {path: 'new', component: AddBookComponent}, 
       { path: 'new-reactive', component: AddBookReactiveComponent },
+      {path: 'cart', component:CartComponent},
       { path: ':id', component: BookDetailsComponent }
 ];
 

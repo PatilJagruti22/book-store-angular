@@ -17,3 +17,24 @@
   .container{
     flex: 1 1 400px;
   }
+
+  /* src/app/book-list/book-list.component.css */
+
+/* Style the button */
+button {
+  margin-top: 10px;
+  background-color: #007bff; /* Blue background color */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+}
+
+/* Style the button on hover */
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  cursor: pointer;
+}
+
+/* Style the mat-icon (shopping cart icon) */
+mat-icon {
+  margin-right: 8px; /* Add some spacing between the icon and text */
+}

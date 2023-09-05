@@ -10,6 +10,8 @@ import { RecentBooksComponent } from './components/recent-books/recent-books.com
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { FormsModule } from '@angular/forms';
 import { AddBookReactiveComponent } from './components/add-book-reactive/add-book-reactive.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -21,13 +23,15 @@ import { AddBookReactiveComponent } from './components/add-book-reactive/add-boo
     AddBookComponent,
     RecentBooksComponent,
     BookCardComponent,
-    AddBookReactiveComponent
+    AddBookReactiveComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
     BooksRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class BooksModule { }
