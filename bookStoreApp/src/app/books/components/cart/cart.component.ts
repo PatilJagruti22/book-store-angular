@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from '../../models/book.model';
+import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,26 +9,32 @@ import { BookModel } from '../../models/book.model';
 })
 export class CartComponent implements OnInit{
 
-  constructor(){}
+  cart: BookModel[] = [];
+
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //this.getCart();
+    this.bookService.getCart();
   }
 
-  private cart: BookModel[] = [];
-
-
-  getCart(): BookModel[] {
-    return this.cart;
+  getCart(): void {
+    
+  //this.cartContents = this.cartService.getCart();
+    this.cart = this.bookService.getCart();
+    console.log('Cart contents:', this.cart);
   }
 
   removeFromCart(book: BookModel): void {
-    const index = this.cart.findIndex((b) => b.id === book.id);
-    if (index !== -1) {
-      this.cart.splice(index, 1);
-    }
+    this.bookService.removeFromCart(book);
+    this.getCart();
   }
 
-  
-
+  calculateTotal(): number {
+    let total = 0;
+    for (const book of this.cart) {
+      total += book.price.value; // Access the numeric value from PriceModel
+    }
+    return total;
+  }
 }

@@ -8,34 +8,36 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class BookService {
 
-  private cartItems: BookModel[] = [];
-  private cartSubject: BehaviorSubject<BookModel[]> = new BehaviorSubject<BookModel[]>([]);
-
+  private cart: BookModel[] = [];
  
   constructor(private _httpClient : HttpClient) {
-    this.cartSubject.next(this.cartItems);
    }
 
   public addBook(bookModel : BookModel) : Observable<BookModel>{
-    return this._httpClient.post<BookModel>('https://localhost:7193/api/Books', bookModel);
+    return this._httpClient.post<BookModel>('https://localhost:44363/api/Books', bookModel);
   }
 
   public getBooks(): Observable<BookModel[]> {
-    return this._httpClient.get<BookModel[]>('https://localhost:7193/api/Books');
+   // return this._httpClient.get<BookModel[]>('https://localhost:7193/api/Books');
+   return this._httpClient.get<BookModel[]>('https://localhost:44363/api/Books');
   }
 
   public addToCart(book: BookModel): void {
-    // Check if the book is already in the cart
-    const existingBook = this.cartItems.find(item => item.id === book.id);
+    this.cart.push(book);
+    console.log('Book added to cart:', book);
+  console.log('Updated Cart:', this.cart);
+  }
+  
 
-    if (existingBook) {
-      // If the book is already in the cart, you might want to update its quantity or perform some other action.
-      // For simplicity, this example just increments the quantity.
-      existingBook.quantity += 1;
-    } else {
-      // If the book is not in the cart, add it to the cart with a quantity of 1.
-      const newBook: BookModel = { ...book, quantity: 1 };
-      this.cartItems.push(newBook);
+  public getCart(): BookModel[] {
+    console.log('Retrieving Cart:', this.cart);
+    return this.cart;
+  }
+
+  public removeFromCart(book: BookModel): void {
+    const index = this.cart.findIndex((b) => b.id === book.id);
+    if (index !== -1) {
+      this.cart.splice(index, 1);
     }
   }
   

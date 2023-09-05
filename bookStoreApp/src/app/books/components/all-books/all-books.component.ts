@@ -50,4 +50,10 @@ export class AllBooksComponent implements OnInit{
         this.books = books;
       });
   }
+
+  addToCart(book: BookModel): void {
+    this.bookService.addToCart(book); // Correctly call the addToCart method
+  }
+  
+
 }
