@@ -4,7 +4,7 @@
           <mat-card-title>{{book.title | titlecase
               }}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <img mat-card-image src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Photo of a Shiba Inu">
       <mat-card-content>
           <p>
               {{book.author}}
@@ -13,16 +13,16 @@
           <p>
               Price: {{book.price.value + ' '+ book.price.currency}}
           </p>
-          <p>
+          <!-- <p>
               Is book published: {{book.isPublished | boolformat}}
-          </p>
+          </p> -->
           <p>
               Published on: {{book.publishedOn | date}}
           </p>
           <p>
               Authors:
               <span *ngFor="let author of book.authors">
-                  {{author.fullName}},
+                  {{author.fullName}}
                   ({{author.address}})
               </span>
           </p>
@@ -31,5 +31,7 @@
           <button mat-button>Details</button>
           <button mat-button>SHARE</button>
       </mat-card-actions>
+  <!-- <button (click)="addToCart(book)">Add to Cart</button> -->
+  <button mat-raised-button color="primary" (click)="addToCart(book)"><mat-icon>add_shopping_cart</mat-icon>Add to Cart</button>
   </mat-card>
 </div>

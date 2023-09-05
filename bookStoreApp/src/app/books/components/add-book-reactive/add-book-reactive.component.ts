@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../services/book.service';
 
+
 @Component({
   selector: 'app-add-book-reactive',
   templateUrl: './add-book-reactive.component.html',
@@ -56,15 +57,15 @@ export class AddBookReactiveComponent implements OnInit {
   }
 
   saveBook(): void {
-    // if (this.addBookForm.valid) {
-    //   this._bookService.addBook(this.addBookForm.value)
-    //     .subscribe(x => {
-    //       console.log(x);
-    //     });
-    // }
-    // else {
-    //   alert('Form invalid');
-    // }
+    if (this.addBookForm.valid) {
+      this._bookService.addBook(this.addBookForm.value)
+        .subscribe(x => {
+          console.log(x);
+        });
+    }
+    else {
+      alert('Form invalid');
+    }
   }
 
 

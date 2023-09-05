@@ -23,7 +23,7 @@ export class AddBookComponent implements OnInit {
   ngOnInit(): void {
     this.model = new BookModel();
     //this.model.title = 'Book';
-    this.model.totalPages = (100).toString();
+    this.model.totalPages = 100;
     this.model.price = {
       value: 100,
       currency: 'USD'

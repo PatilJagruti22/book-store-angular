@@ -14,6 +14,7 @@ export class AllBooksComponent implements OnInit{
  
   private _pageTitle: string;
   private _counterService: any;
+  cart: any;
 
   public set pageTitle(value: string) {
     this._pageTitle = value;
@@ -24,8 +25,11 @@ export class AllBooksComponent implements OnInit{
   }
 
   public books: BookModel[] = [];
+  //books: BookModel[] = [];
 
-  constructor(public bookService: BookService) { }
+  constructor(public bookService: BookService) { 
+    
+  }
 
   ngOnInit(): void {
     this.pageTitle = 'All books'

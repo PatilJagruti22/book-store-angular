@@ -1,148 +1,42 @@
 import { Injectable } from '@angular/core';
 import { BookModel } from '../models/book.model';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  private allBooks = [
-        {
-          "id": 1,
-          "title": "Java Mutithreding",
-          "totalPages": "200",
-          "author": "John Doe",
-          "price": {
-            "currency": "USD",
-            "value": 19.99
-          }
-        },
-        {
-          "id": 2,
-          "title": "C#",
-          "totalPages": "2000",
-          "author": "John Does",
-          "price": {
-            "currency": "USD",
-            "value": 19.999
-          }
-        },
-        {
-          "id": 3,
-          "title": "PHP",
-          "totalPages": "3000",
-          "author": "Prince",
-          "price": {
-            "currency": "USD",
-            "value": 56.999
-          }
-        },
-        {
-          "id": 4,
-          "title": "MVC Fundamentals",
-          "totalPages": "700",
-          "author": "Does",
-          "price": {
-            "currency": "USD",
-            "value": 99
-          }
-        },
-        {
-          "id": 5,
-          "title": "DotNet Core",
-          "totalPages": "2000",
-          "author": "John Does",
-          "price": {
-            "currency": "USD",
-            "value": 19.999
-          }
-        },
-        {
-          "id": 6,
-          "title": "Azure Fundamentals",
-          "totalPages": "700",
-          "author": "Does",
-          "price": {
-            "currency": "USD",
-            "value": 99
-          }
-        },
-        {
-          "id": 7,
-          "title": "Machine Learning",
-          "totalPages": "2000",
-          "author": "John Does",
-          "price": {
-            "currency": "USD",
-            "value": 19.999
-          }
-        }
-      ];
+  private cartItems: BookModel[] = [];
+  private cartSubject: BehaviorSubject<BookModel[]> = new BehaviorSubject<BookModel[]>([]);
 
-  constructor() { }
+ 
+  constructor(private _httpClient : HttpClient) {
+    this.cartSubject.next(this.cartItems);
+   }
 
-  // public addBook(bookModel: BookModel): void{
-  //   this.allBooks.push(bookModel);
-  // }
+  public addBook(bookModel : BookModel) : Observable<BookModel>{
+    return this._httpClient.post<BookModel>('https://localhost:7193/api/Books', bookModel);
+  }
 
-  public addBook(bookModel: BookModel): void {
-    console.log('Adding book:', bookModel);
-    this.allBooks.push(bookModel);
-    console.log('All books after adding:', this.allBooks);
+  public getBooks(): Observable<BookModel[]> {
+    return this._httpClient.get<BookModel[]>('https://localhost:7193/api/Books');
+  }
+
+  public addToCart(book: BookModel): void {
+    // Check if the book is already in the cart
+    const existingBook = this.cartItems.find(item => item.id === book.id);
+
+    if (existingBook) {
+      // If the book is already in the cart, you might want to update its quantity or perform some other action.
+      // For simplicity, this example just increments the quantity.
+      existingBook.quantity += 1;
+    } else {
+      // If the book is not in the cart, add it to the cart with a quantity of 1.
+      const newBook: BookModel = { ...book, quantity: 1 };
+      this.cartItems.push(newBook);
+    }
   }
   
-  public getBooks(): any {
-    return this.allBooks;
-}
-
-
-  public recentBooks() : any {
-    return (
-      [
-        {
-          "id": 1,
-          "title": "Java Mutithreding",
-          "totalPages": "200",
-          "author": "John Doe",
-          "price": {
-            "currency": "USD",
-            "value": 19.99
-          }
-        },
-        {
-          "id": 2,
-          "title": "C#",
-          "totalPages": "2000",
-          "author": "John Does",
-          "price": {
-            "currency": "USD",
-            "value": 19.999
-          }
-        },
-        {
-          "id": 3,
-          "title": "PHP",
-          "totalPages": "3000",
-          "author": "Prince",
-          "price": {
-            "currency": "USD",
-            "value": 56.999
-          }
-        },
-        {
-          "id": 4,
-          "title": "MVC Fundamentals",
-          "totalPages": "700",
-          "author": "Does",
-          "price": {
-            "currency": "USD",
-            "value": 99
-          }
-        },
-      ] 
-    )
-    
-    
-  }
-
 }
